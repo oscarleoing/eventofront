@@ -1,0 +1,353 @@
+/* Reset box-sizing */
+* {
+    box-sizing: border-box;
+}
+
+/* Estilo del cuerpo */
+body {
+    background-color: #242333;
+    color: white;
+    font-family: 'Lato', 'sans-serif';
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    overflow-x: hidden; /* Evitar desplazamiento horizontal */
+}
+
+
+
+
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    max-width: 1200px;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Para que los elementos se ajusten en pantallas pequeñas */
+}
+
+
+
+
+/* Contenedor de las secciones de asientos */
+.seating-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 65%; /* Tamaño ajustado para las secciones de asientos */
+}
+
+/* Estilo de la sección seating */
+.seating, .seatingdos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Estilo de los asientos */
+
+
+/* Responsividad del tamaño de los asientos */
+.seat.yellow {
+    background-color: rgb(231, 231, 86);
+}
+
+.seat.green {
+    background-color: lightgreen;
+}
+
+.seat.pa {
+    background-color: #0099FF;
+}
+
+.seat.pb {
+    background-color: #8c4ed9;
+}
+
+/* Estilo de asientos seleccionados */
+.seat.selected {
+    background-color: #ffffff;
+}
+
+/* Estilo de asientos ocupados */
+.seat.occupied {
+    background-color: lightcoral;
+}
+
+/* Tooltip */
+.tooltip {
+    position: absolute;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Mostrar los estados de los asientos */
+.showcase .seat:not(.occupied):hover {
+    cursor: default;
+    transform: scale(1);
+}
+
+/* Mostrar los estados de los asientos de 2 en 2 */
+.showcase {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 15px; /* Espacio entre los elementos */
+}
+
+    .showcase li {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 0 10px;
+    }
+
+        .showcase li small {
+            margin-left: 10px;
+        }
+
+    .showcase .seat {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
+
+/* Texto dentro de la sección de asientos */
+p.text {
+    margin: 5px 0;
+    text-align: center;
+}
+
+    p.text span {
+        color: #6feaf6;
+    }
+
+
+/* Estilo del botón */
+button#btncomprar-boleto {
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio entre el icono y el texto */
+}
+
+    button#btncomprar-boleto:hover {
+        background-color: #218838;
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+
+    button#btncomprar-boleto:active {
+        background-color: #1e7e34;
+        transform: translateY(0);
+    }
+
+    button#btncomprar-boleto i {
+        font-size: 20px;
+        margin-right: 5px;
+    }
+
+h3 {
+    text-align: center; /* Centra el texto */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    font-size: 15px; /* Tamaño de fuente ajustable */
+    font-weight: bold; /* Grosor de la fuente */
+    margin: 10px 0; /* Espaciado superior e inferior */
+}
+
+
+/* Pantalla del cine */
+
+
+
+.container-SW {
+    perspective: 1000px;
+    margin-bottom: 30px;
+}
+
+.screen {
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+    margin: 15px 0;
+    transform: rotateX(-45deg);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.75);
+    /* Alineación del texto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Estilo del texto */
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+
+/* Contenedor de la lista de asientos seleccionados */
+#selected-seats-container {
+    background-color: #242333;
+    padding: 20px;
+    border-radius: 8px;
+    width: 35%;
+    max-width: 400px;
+    align-self: flex-start;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Lista de asientos seleccionados */
+#selected-seats-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 90%;
+}
+
+    /* Estilo de los elementos de la lista de asientos seleccionados */
+    #selected-seats-list li {
+        background-color: #f1f1f1;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 8px;
+        color: #000000;
+        font-size: 15px;
+    }
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.seat {
+    background-color: #6f6f72;
+    height: 12px;
+    width: 15px;
+    margin: 3px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.seat-rest, .seat-fila {
+    background-color: #242333;
+    height: 12px;
+    width: 15px;
+    margin: 3px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+
+@media (max-width: 1300px) {
+
+    .seat, .seat-rest, .seat-fila {
+        height: 10px;
+        width: 12px;
+        margin: 2px;
+    }
+
+    #selected-seats-list {
+        width: 80%;
+    }
+
+        #selected-seats-list li {
+            font-size: 13px;
+        }
+
+    .tooltip {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .seat, .seat-rest, .seat-fila {
+        height: 7px;
+        width: 9px;
+        margin: 1px;
+    }
+
+    #selected-seats-list {
+        width: 50%;
+    }
+
+
+        #selected-seats-list li {
+            font-size: 10px;
+        }
+}
+
+/* Estilo para las puertas */
+.seat-puerta {
+    background-color: #24233300;
+    height: 16px;
+    width: 8px;
+    margin: 1px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    color: rgb(249, 249, 249);
+    font-size: 20px;
+    align-items: center;
+    gap: 4px; /* Espacio entre el icono y el texto */
+    font-size: 17px;
+    white-space: nowrap;
+}
+
+
+
+.seat-p {
+    background-color: #24233300;
+    height: 16px;
+    width: 8px;
+    margin: 1px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    color: rgba(255, 255, 255, 0);
+}
